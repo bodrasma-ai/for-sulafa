@@ -16,11 +16,13 @@
             align-items: center;
             min-height: 100vh;
             color: #3a225d;
+            overflow-x: hidden;
+            position: relative;
         }
 
         /* الحاوية الرئيسية مجهزة بشكل فخم وناعم للنصوص الطويلة */
         .card-container {
-            background: rgba(255, 255, 255, 0.82);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 30px;
@@ -33,6 +35,8 @@
             margin: 40px 0;
             box-sizing: border-box;
             animation: slideUp 1.2s ease-out;
+            position: relative;
+            z-index: 10;
         }
 
         /* إطار الصورة المضيء بنعومة أعلى الكرت */
@@ -57,13 +61,18 @@
             object-fit: cover;
         }
 
-        /* الهيدر العلوي الرقيق */
+        /* الهيدر العلوي الرقيق مع تأثير الكتابة الحية */
         .header-title {
             font-size: 24px;
             color: #4a148c;
             font-weight: 800;
             margin-bottom: 5px;
             letter-spacing: 0.5px;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            border-left: 2px solid #7e57c2;
+            animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
         }
 
         .header-subtitle {
@@ -75,7 +84,7 @@
 
         /* صندوق النص المصمم للقراءة المريحة جداً بالتلفون */
         .content-box {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.65);
             border-radius: 20px;
             padding: 25px 20px;
             border-right: 4px solid #b39ddb;
@@ -104,14 +113,13 @@
             margin: 0 0 16px 0;
             font-weight: 500;
             color: #424242;
-            white-space: pre-line; /* للحفاظ على نزول الأسطر كما كتبتها بالظبط */
+            white-space: pre-line;
         }
 
-        /* تمييز القفلات والقلوب بلون دافئ ونعومة */
-        .highlight-heart {
-            color: #7e57c2;
-            font-weight: bold;
-        }
+        /* تمييز الكلمات المميزة بالألوان */
+        .highlight-purple { color: #7e57c2; font-weight: bold; font-style: italic; }
+        .highlight-green { color: #2e7d32; font-weight: bold; }
+        .highlight-brown { color: #6d4c41; font-weight: bold; }
 
         /* زر التثبيت والتفاعل السفلي */
         .footer-btn {
@@ -135,10 +143,35 @@
             box-shadow: 0 10px 25px rgba(149, 117, 205, 0.35);
         }
 
-        /* أنيميشن ناعم لدخول الصفحة */
+        /* تأثير القلوب المتساقطة بالخلفية */
+        .heart {
+            position: fixed;
+            bottom: -10%;
+            font-size: 20px;
+            color: rgba(149, 117, 205, 0.4);
+            animation: float Up 6s linear infinite;
+            z-index: 1;
+            user-select: none;
+        }
+
+        /* أنيميشن الدخول والتأثيرات */
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: #7e57c2; }
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
@@ -176,7 +209,7 @@
 بدي بس أوريكي مقطع صغير من عيد ميلادك الـ19...
 شفتي؟ ❤️
 من زمان طويل وأنا ما كنت شايف غيرك.
-ومن زمان طويل وإنتِ حنونة.
+من زمان طويل وإنتِ حنونة.
 حنونة بطريقة ما بتتغير.
 
 خديلك نظرة على الصورة...
@@ -184,11 +217,11 @@
 كأنها متعجبة...
 هل فعلًا أنا رح أكبر وأصير هيك؟
 هل فعلًا رح أوصل لهون؟
-هل فعلًا رح أقدر?
+هل فعلًا رح أقدر؟
 
-ولو سألتِ نسخة الروضة...
+ولو سألتِ <span class="highlight-purple">نسخة الروضة</span>...
 كان يمكن ما صدقت.
-ولو سألتِ نسخة الجامعة بأول يوم...
+ولو سألتِ <span class="highlight-purple">نسخة الجامعة بأول يوم</span>...
 السنفورة الخايفة اللي كانت داخلة على عالم جديد...
 يمكن برضه ما صدقت.
 
@@ -217,11 +250,11 @@
 وأنا مؤمن بهالحكي من كل قلبي. 🤍
 
 دخيل الله يا عيون...
-كبرت الفراشة.
+كبرت <span class="highlight-purple">الفراشة</span>.
 كبرت بالعمر بس والله بالعمر فقط.
 أما روحها؟
 أما ضحكتها؟
-أما تعابيرها?
+أما تعابيرها؟
 لسا فيهم نفس الطفلة اللي بعرفها.
 ولسا مستحيل يطلعوا من ملامحها.
 
@@ -292,9 +325,9 @@
 بس أشوفك مبسوطة.
 هاي لحالها بتكفيني. 🤍
 
-كل عام وإنتِ أحلى مخلل بالعالم. 💚
-وكل عام وإنتِ أطيب حبة نوتيلا. 🤎
-وكل عام وإنتِ أحلى سكر بني بالدنيا كلها. 🤎
+كل عام وإنتِ <span class="highlight-green">أحلى مخلل بالعالم</span>. 💚
+وكل عام وإنتِ <span class="highlight-brown">أطيب حبة نوتيلا</span>. 🤎
+وكل عام وإنتِ <span class="highlight-brown">أحلى سكر بني بالدنيا كلها</span>. 🤎
 
 أما بالنسبة لعمرك...
 فمثل ما شفتي بالفيديو 😄
@@ -317,6 +350,30 @@
     </div>
 
     <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            // اختيار شكل عشوائي للقلب ليعطي تنوعاً لطيفاً
+            const heartTypes = ['💜', '🤍', '💖', '✨'];
+            heart.innerText = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+            
+            // تحديد موقع عشوائي وحجم عشوائي لكل قلب طائر
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 4 + "s"; // بين 4 لـ 7 ثواني
+            heart.style.fontSize = Math.random() * 15 + 15 + "px"; // أحجام ناعمة وصغيرة
+            
+            document.body.appendChild(heart);
+            
+            // مسح القلب بعد انتهاء الأنيميشن للحفاظ على أداء الجهاز
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+
+        // توليد قلب جديد كل 500 مللي ثانية (نصف ثانية) للحفاظ على هدوء الشاشة
+        setInterval(createHeart, 500);
+
         function sendLove() {
             alert("تم إرسال نبضة حب طائرة لسلافة! يارب سنة حلوة لقلبك الأبيض 💜✨");
         }
