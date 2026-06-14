@@ -35,6 +35,28 @@
             animation: slideUp 1.2s ease-out;
         }
 
+        /* إطار الصورة المضيء بنعومة أعلى الكرت */
+        .photo-frame {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 4px solid #b39ddb;
+            box-shadow: 0 0 20px rgba(179, 157, 219, 0.5);
+            transition: transform 0.5s;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         /* الهيدر العلوي الرقيق */
         .header-title {
             font-size: 24px;
@@ -123,6 +145,11 @@
 <body>
 
     <div class="card-container">
+        
+        <div class="photo-frame">
+            <img src="photo_bliss.jpg" alt="Our Beautiful Memory">
+        </div>
+
         <div class="header-title">إلى مؤنستي وفراشتي الحنونة 💜</div>
         <div class="header-subtitle">منذ 2003 وحتى 2026، وإلى الأبد الفخر بكِ..</div>
 
@@ -157,7 +184,7 @@
 كأنها متعجبة...
 هل فعلًا أنا رح أكبر وأصير هيك؟
 هل فعلًا رح أوصل لهون؟
-هل فعلًا رح أقدر؟
+هل فعلًا رح أقدر?
 
 ولو سألتِ نسخة الروضة...
 كان يمكن ما صدقت.
@@ -194,7 +221,7 @@
 كبرت بالعمر بس والله بالعمر فقط.
 أما روحها؟
 أما ضحكتها؟
-أما تعابيرها؟
+أما تعابيرها?
 لسا فيهم نفس الطفلة اللي بعرفها.
 ولسا مستحيل يطلعوا من ملامحها.
 
