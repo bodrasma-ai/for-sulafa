@@ -121,6 +121,50 @@
         .highlight-green { color: #2e7d32; font-weight: bold; }
         .highlight-brown { color: #6d4c41; font-weight: bold; }
 
+        /* تنسيق أزرار الروابط في نهاية الرسالة */
+        .video-btn-container {
+            margin: 25px 0 15px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .video-link-btn {
+            background: linear-gradient(135deg, #e1bee7 0%, #b39ddb 100%);
+            color: #4a148c;
+            text-decoration: none;
+            padding: 10px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(149, 117, 205, 0.15);
+            transition: all 0.3s ease;
+            width: 80%;
+            justify-content: center;
+            border: 1px solid rgba(149, 117, 205, 0.3);
+        }
+
+        .video-link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(149, 117, 205, 0.25);
+            background: linear-gradient(135deg, #b39ddb 0%, #9575cd 100%);
+            color: white;
+        }
+
+        .custom-note {
+            font-size: 15px;
+            color: #6a1b9a;
+            font-weight: bold;
+            margin: 15px 0;
+            font-style: italic;
+            text-align: center;
+            line-height: 1.6;
+        }
+
         /* زر التثبيت والتفاعل السفلي */
         .footer-btn {
             background: linear-gradient(135deg, #b39ddb 0%, #9575cd 100%);
@@ -149,7 +193,7 @@
             bottom: -10%;
             font-size: 20px;
             color: rgba(149, 117, 205, 0.4);
-            animation: float Up 6s linear infinite;
+            animation: floatUp 6s linear infinite;
             z-index: 1;
             user-select: none;
         }
@@ -207,9 +251,15 @@
 وواثق فيه مثل ما أنا واثق بالشمس لما تطلع كل صباح.
 
 بدي بس أوريكي مقطع صغير من عيد ميلادك الـ19...
+                يا سلاف.... يا روحي يا عيوني يا غزالي يا ملاكي يا قلبي يا جنتي يا نعمتي يا اميرتي يا قصيرتي... 
+                انتي البنت الوحيده اللي قادرة على إسعادي والله والله... انتي البنت الوحيده الي انا اذا ما قضيت حياتي معها ما بدي حياتي كلها لانو ما الها معنى حياتي بتصير.... انتي الوحيدة الي قادرة على تغيير مزاجي..... ولك انا بعشقك لدرجة ما حدا بقدر بوصفها ابدا ولك انا نفسي تفوتي عقلبي وتشوفي كمية الحب والعشق الي مخبيها الك.... انا الي مضايقني غيرتي عليكي بس مس قادر ابطلها يا روحي مش قادر يمكن لانك جنتي وانا مش شايف غيرك والله والله والله يا سلاف يا روحي مستحيل اتغير عليكي مستحيل اتركك مستحيل احب حدا غيرك والله بعشقك عشق يا الللللللللللله يا الللللللللللللللللللللله لو تعرفي قديش بحبك يا سلاف 
+
+
 شفتي؟ ❤️
 من زمان طويل وأنا ما كنت شايف غيرك.
-من زمان طويل وإنتِ حنونة.
+ومن زمان طويل وإنتِ حنونة.
+                اذا من زمان ونظرتي هيك ... كيف هلأ ؟
+                من طول عمرك حنونة
 حنونة بطريقة ما بتتغير.
 
 خديلك نظرة على الصورة...
@@ -344,6 +394,20 @@
 
 وبوعدك...
 السنة الجاية نحتفل فيها سوا. 🤎</p>
+
+            <div class="video-btn-container">
+                <a href="https://drive.google.com/file/d/1TpayFmA1Kl5-r_SSy45ox46_BtCIWfXx/view?usp=sharing" target="_blank" class="video-link-btn">
+                    🎬 المفاجأة الأولى (فيديو عيد الميلاد)
+                </a>
+                <a href="رابط_الفيديو_الثاني_هنا" target="_blank" class="video-link-btn">
+                    ✨ المفاجأة الثانية 
+                </a>
+            </div>
+
+            <div class="custom-note">
+                بتمنى تعجبك المفاجآت الي مش من قيمتك ابدا .... 💜
+            </div>
+
         </div>
 
         <button class="footer-btn" onclick="sendLove()">بحبك يا حنونتي 💜 ✨</button>
@@ -354,24 +418,20 @@
             const heart = document.createElement('div');
             heart.classList.add('heart');
             
-            // اختيار شكل عشوائي للقلب ليعطي تنوعاً لطيفاً
             const heartTypes = ['💜', '🤍', '💖', '✨'];
             heart.innerText = heartTypes[Math.floor(Math.random() * heartTypes.length)];
             
-            // تحديد موقع عشوائي وحجم عشوائي لكل قلب طائر
             heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 3 + 4 + "s"; // بين 4 لـ 7 ثواني
-            heart.style.fontSize = Math.random() * 15 + 15 + "px"; // أحجام ناعمة وصغيرة
+            heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+            heart.style.fontSize = Math.random() * 15 + 15 + "px";
             
             document.body.appendChild(heart);
             
-            // مسح القلب بعد انتهاء الأنيميشن للحفاظ على أداء الجهاز
             setTimeout(() => {
                 heart.remove();
             }, 7000);
         }
 
-        // توليد قلب جديد كل 500 مللي ثانية (نصف ثانية) للحفاظ على هدوء الشاشة
         setInterval(createHeart, 500);
 
         function sendLove() {
